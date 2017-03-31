@@ -9,9 +9,6 @@ RUN apt-get update -yqq && apt-get install -y git libcurl4-gnutls-dev libicu-dev
 # Install php environment
 RUN docker-php-ext-install mbstring mcrypt pdo_mysql curl json intl gd xml zip bz2 opcache bcmath
 
-# Install phpunit
-RUN curl -Lo /usr/local/bin/phpunit https://phar.phpunit.de/phpunit.phar && chmod +x /usr/local/bin/phpunit
-
 # Install Composer Package manager
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && php composer-setup.php \
         php -r "unlink('composer-setup.php');" && mv composer.phar /usr/local/bin/composer
