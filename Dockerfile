@@ -11,10 +11,13 @@ RUN docker-php-ext-install mbstring mcrypt pdo_mysql curl json intl gd xml zip b
 
 # Install Composer Package manager
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && php composer-setup.php \
-        php -r "unlink('composer-setup.php');" && mv composer.phar /usr/local/bin/composer
+    php -r "unlink('composer-setup.php');" && mv composer.phar /usr/local/bin/composer
 
 # Install chromium and X virtual framebuffer
 # https://github.com/mark-adams/docker-chromium-xvfb/blob/master/images/base/Dockerfile
 ADD xvfb-chromium /usr/bin/xvfb-chromium
-RUN ln -s /usr/bin/xvfb-chromium /usr/bin/google-chrome
-RUN ln -s /usr/bin/xvfb-chromium /usr/bin/chromium-browser
+
+RUN ln -s /usr/bin/xvfb-chromium /usr/bin/google-chrome \
+    && chmod +x /usr/bin/google-chrome \
+    && ln -s /usr/bin/xvfb-chromium /usr/bin/chromium-browser \
+    && chmod +x /usr/bin/chromium-browser
