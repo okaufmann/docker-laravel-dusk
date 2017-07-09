@@ -7,7 +7,7 @@ RUN apt-get update -yqq apt-get install -yqq git libcurl4-gnutls-dev libicu-dev 
              libaspell-dev libsnmp-dev libpcre3-dev libtidy-dev 
 
 # Install php environment
-RUN docker-php-ext-install mbstring mcrypt pdo_mysql curl json intl gd xml zip bz2 opcache bcmath
+RUN docker-php-ext-install mbstring mcrypt pdo_mysql curl json intl gd xml zip bz2 opcache bcmath imagick
 
 # Install Composer Package manager
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && php composer-setup.php \
