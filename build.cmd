@@ -1,0 +1,1 @@
+docker build --tag="mightycode/docker-laravel-dusk:latest" .
