@@ -1,7 +1,7 @@
 FROM php:7.1
 
 # Install packages
-RUN apt-get update -yqq && apt-get install -y git libcurl4-gnutls-dev libicu-dev libmcrypt-dev libvpx-dev libjpeg-dev libpng-dev  \
+RUN apt-get update -yqq && apt-get install -y git curl libcurl4-gnutls-dev libicu-dev libmcrypt-dev libvpx-dev libjpeg-dev libpng-dev  \
                         libxpm-dev zlib1g-dev libfreetype6-dev libxml2-dev libexpat1-dev libbz2-dev \
                         libgmp3-dev libldap2-dev unixodbc-dev libpq-dev libsqlite3-dev libaspell-dev \
                         libsnmp-dev libpcre3-dev libtidy-dev -yqq bzip2 libfontconfig xvfb chromium libmagickwand-dev
@@ -9,6 +9,8 @@ RUN apt-get update -yqq && apt-get install -y git libcurl4-gnutls-dev libicu-dev
 # Install php environment
 RUN docker-php-ext-install mbstring mcrypt pdo_mysql curl json intl gd xml zip bz2 opcache bcmath
 
+# Install NVM
+RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
 
 # Install imagick
 RUN pecl install imagick
