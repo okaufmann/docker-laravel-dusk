@@ -13,7 +13,7 @@ RUN docker-php-ext-install mbstring mcrypt pdo_mysql curl json intl gd xml zip b
 RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
 
 # Install imagick
-RUN pecl install imagick
+RUN pecl install imagick && docker-php-ext-enable imagick
 
 # Install Composer Package manager
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && php composer-setup.php \
